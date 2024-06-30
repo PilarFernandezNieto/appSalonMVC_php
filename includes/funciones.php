@@ -1,10 +1,11 @@
 <?php
 
-function debuguear($variable) : string {
+function debuguear($variable, $die = true)   {
     echo "<pre>";
     var_dump($variable);
     echo "</pre>";
-    exit;
+    if(!$die)
+        exit;
 }
 
 // Escapa / Sanitizar el HTML
@@ -21,6 +22,7 @@ function isAuth() : void{
 }
 function isAdmin() : void {
     if(!isset($_SESSION["admin"])){
+        // debuguear($_SESSION,false);
         header("Location: /");
     }
 }
